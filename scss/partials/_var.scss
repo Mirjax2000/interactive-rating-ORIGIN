@@ -1,0 +1,36 @@
+// ---------------------
+// Variables
+// ---------------------
+
+$debug: false;
+
+// --- colors ---
+$clr10: #ffffff;
+$clr11: #969FAD;
+$clr12: #FC7614;
+$clr13: #262E38;
+$clr14: #131518;
+$clr15: #7C8798;
+
+
+$backroundGradient: (
+    98.96% 98.96% at 50% 0%,
+    #232A34 0%,
+    #181E27 100%
+);
+// --- break points ---
+
+
+// --- font-sizes ---
+
+$h1Max: 1.75rem; //28px
+$h1Min: 1.5rem; //24px
+
+$parMax: .9375rem; //15px
+$parMin: .875rem; //14px
+
+$btnMax: .9375rem; //15px
+$btnMin: .875rem; //14px
+
+$numMax: 1rem; //16px
+$numMin: .875rem; //14px

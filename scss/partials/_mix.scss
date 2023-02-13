@@ -1,0 +1,208 @@
+@use 'var' as *;
+
+// --- function ---
+// --- funkce 'em' na line height prepocet na em
+@function em($height, $size) {
+    @return calc(($height / $size) *1em);
+}
+
+
+// ---------------------
+// Mixins
+// ---------------------
+
+// vlastnost vyberu
+@mixin selection {
+    ::-moz-selection {
+        @content;
+    }
+
+    ::selection {
+        @content;
+    }
+}
+
+// zadny vyber
+@mixin noSelection {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+// $value= border-box, content-box, inherit
+@mixin box-sizing ($value) {
+    box-sizing: $value;
+    -webkit-box-sizing: $value;
+}
+
+
+// zakladni layout
+@mixin flex($justify: space-between, $align: flex-start, $gap: 0rem, $direction: row, $wrap: nowrap) {
+    display: flex;
+    flex-direction: $direction;
+    flex-wrap: $wrap;
+    justify-content: $justify;
+    align-items: $align;
+    gap: $gap;
+}
+
+// zarovnani na stred
+@mixin flexCenter($justify: center, $align: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+@mixin container($width: 90rem) {
+    max-width: $width;
+    margin-inline: auto;
+    padding: 0 0rem;
+}
+
+@mixin radialGradient($background: $backroundGradient) {
+    background: -webkit-radial-gradient($background);
+    background: -moz-radial-gradient($background);
+    background: -o-radial-gradient($background);
+    background: radial-gradient($background);
+}
+
+
+// --- placeholders ---
+%autoMargin {
+    margin-inline: auto;
+}
+
+%autoWidth {
+    max-width: 70%;
+    @extend %autoMargin;
+}
+
+%borderRadius50 {
+    border-radius: 50%;
+}
+
+%borderRadius30 {
+    border-radius: 1.875rem;
+}
+
+%weight-300 {
+    font-weight: 300;
+}
+
+%weight-400 {
+    font-weight: 400;
+}
+
+%weight-500 {
+    font-weight: 500;
+}
+
+%weight-700 {
+    font-weight: 700;
+}
+
+%weight-800 {
+    font-weight: 800;
+}
+
+%clr10 {
+    color: $clr10;
+}
+
+%backClr10 {
+    background-color: $clr10;
+}
+
+%clr11 {
+    color: $clr11;
+}
+
+%backClr11 {
+    background-color: $clr11;
+}
+
+%clr12 {
+    color: $clr12;
+}
+
+%backClr12 {
+    background-color: $clr12;
+}
+
+%clr13 {
+    color: $clr13;
+}
+
+%backClr13 {
+    background-color: $clr13;
+}
+
+%clr14 {
+    color: $clr14;
+}
+
+%backClr14 {
+    background-color: $clr14;
+}
+
+%clr15 {
+    color: $clr15;
+}
+
+%backClr15 {
+    background-color: $clr15;
+}
+
+%inputReset {
+    outline: none;
+    border: none;
+}
+
+%btn {
+    @extend %clr10;
+    @extend %weight-700;
+    @extend %backClr12;
+    width: 100%;
+    padding: .8rem 0 .4rem 0;
+    text-align: center;
+    border-radius: 1.375rem;
+    font-size: var(--btn-fs);
+    line-height: em(19px, 15px);
+    letter-spacing: .125rem;
+    transition: background-color ease-in-out .2s, color ease-in-out .2s;
+    @extend %inputReset;
+}
+
+%btn1Idle {
+    @extend %btn;
+    @extend %backClr12;
+}
+
+%btn1Hover {
+    @extend %btn;
+    @extend %backClr12;
+}
+
+%heading {
+    @extend %clr10;
+    @extend %weight-700;
+    font-size: var(--h1-fs);
+    line-height: em(35, 28);
+}
+
+%output {
+    @extend %weight-400;
+    @extend %clr12;
+    font-size: var(--par-fs);
+    line-height: em(24, 15)
+}
+
+%listItemFont {
+    @extend %weight-700;
+    color: $clr15;
+    font-size: var(--num-fs);
+    line-height: em(24, 16);
+}
