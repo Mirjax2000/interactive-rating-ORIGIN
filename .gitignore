@@ -1,0 +1,7 @@
+gulpfile.js
+imageInput/
+imageOutput/
+interactive-rating-component.fig
+node_modules/
+package-lock.json
+package.json
