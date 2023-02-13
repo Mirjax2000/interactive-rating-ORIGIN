@@ -10,6 +10,8 @@ v js jsem se vse snazil resit pres cykly
 a take jsem pouzil veskere nastroje se kterymi jsem se doposud seznamoval:
 sass <br>
 sass compressed style<br>
-gulp s modulama:  gulp sass<br>
-                  gulp watch<br>
+
+gulp s modulama:<br>
+gulp sass<br>
+gulp watch<br>
 git<br>
