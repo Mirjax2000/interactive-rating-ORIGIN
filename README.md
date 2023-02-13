@@ -8,8 +8,8 @@ Pristoupil jsem k reseni pres checkboxy ve form elementu
 v js jsem se vse snazil resit pres cykly
 
 a take jsem pouzil veskere nastroje se kterymi jsem se doposud seznamoval:
-sass
-sass compressed style
-gulp s modulama:  gulp sass
-                  gulp watch
-git
+sass <br>
+sass compressed style<br>
+gulp s modulama:  gulp sass<br>
+                  gulp watch<br>
+git<br>
