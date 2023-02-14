@@ -1,28 +1,30 @@
+// @use 'placeholder' as *;
 @use 'var' as *;
 @use 'mix' as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
 
 /* border-box */
-html {
-    @include box-sizing (border-box);
-}
-
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
 
-/* --- vyber --- */
-@include selection {
-    background-color: #1683ff;
-    color: #ffffff;
+// --- HTML settings: box sizing, selection
+html {
+    @include box-sizing (border-box);
+    @include selection;
 }
+
 
 body {
     font-family: 'Overpass', sans-serif;
-    background-color: $clr14;
+    @include beathingBackround($clr11, $clr12);
+}
+
+.hidden {
+    display: none;
 }
 
 .container {
@@ -33,11 +35,12 @@ body {
 
 p {
     @extend %weight-400;
-    @extend %clr11;
+    @extend %clr15;
     font-size: var(--par-fs);
     line-height: em(24, 15);
 }
 
+// --- keep it in the middle ---
 .mrFlex {
     @include flex($direction: column, $justify: center, $align: center);
 }
@@ -67,78 +70,10 @@ p {
     .h1--margin {
         margin: 2.7rem 0 .3em 0
     }
-
-    .content-list {
-        @include flex;
-        text-align: center;
-
-        .content-list-item {
-            @extend %backClr13;
-            @extend %borderRadius50;
-            width: 3.1875rem;
-            height: 3.1875rem;
-            margin: 1.5rem 0 2rem 0;
-
-            input {
-                width: 100%;
-                height: 100%;
-                z-index: 100;
-                cursor: pointer;
-                appearance: none;
-                position: relative;
-                @include flexCenter;
-                @extend %borderRadius50;
-                transition: color ease-in-out .2s, background-color ease-in-out .2s;
-
-                &:checked {
-                    background-color: $clr12;
-                }
-
-                &::before {
-                    @extend %listItemFont;
-                    position: absolute;
-                    z-index: 10;
-                    transition: color ease-in-out .2s;
-                }
-
-                &:hover {
-                    @extend %backClr15;
-                }
-
-                &:hover::before {
-                    @extend %clr10;
-                }
-
-                &:checked::before {
-                    @extend %clr10;
-                }
-
-                &:active {
-                    background-color: $clr12;
-                    transition: background-color ease-in-out 0.1s;
-                }
-            }
-        }
-
-        @for $i from 1 to 6 {
-
-            & .content-list-item:nth-child(#{$i})input:before {
-                content: "#{$i}";
-
-            }
-        }
-    }
-
-    .content-submit {
-        @extend %btn;
-
-        &:hover {
-            @extend %backClr10;
-            @extend %clr12;
-        }
-    }
 }
 
+
+// --- second display --- 
 .thanks {
     text-align: center;
     @extend .content;
@@ -180,9 +115,5 @@ p {
         padding: 1rem;
         min-width: 15.125rem;
 
-        .content-list .content-list-item {
-            width: 2.625rem;
-            height: 2.625rem;
-        }
     }
 }

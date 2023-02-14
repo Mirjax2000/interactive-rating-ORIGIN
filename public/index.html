@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>interactive rating</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- zadej popis stranky -->
+    <meta name="description" content="">
+    <!-- zadej klicova slova -->
+    <meta name="keywords" content="responsive">
+    <!-- zadej jmeno autora -->
+    <meta name="author" content="Miroslav Viktorin">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="shortcut icon" href="./favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body class="container mrFlex">
+    <section class="content">
+        <div class="content-star">
+            <img src="./img/icon-star.svg" alt="star icon" width="17" height="16">
+        </div>
+
+        <h1 class="content-heading h1--margin">How did we go?</h1>
+
+        <p>Please let us know how we did with your support request. All feedback is appreciated to help us improve our
+            offering!</p>
+
+        <form id="form">
+            <ul class="content-list">
+                <li class="content-list-item"><input class="content-checkbox" type="checkbox" name="jedna" id="jedna">
+                </li>
+                <li class="content-list-item"><input class="content-checkbox" type="checkbox" name="dve" id="dve">
+                </li>
+                <li class="content-list-item"><input class="content-checkbox" type="checkbox" name="tri" id="tri">
+                </li>
+                <li class="content-list-item"><input class="content-checkbox" type="checkbox" name="ctyri" id="ctyri">
+                </li>
+                <li class="content-list-item"><input class="content-checkbox" type="checkbox" name="pet" id="pet">
+                </li>
+            </ul>
+
+            <input class="content-submit" type="submit" value="SUBMIT">
+        </form>
+    </section>
+
+    <section class="thanks">
+        <div class="thanks-img">
+            <img src="./img/illustration-thank-you.svg" alt="">
+        </div>
+        <h3 class="thanks-js">You selected <span class="num"></span> out of <span class="array"></span></h3>
+        <h2 class="thanks-heading h2--margin">Thank you!</h2>
+        <p>We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get in
+            touch!</p>
+
+    </section>
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

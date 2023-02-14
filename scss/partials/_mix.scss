@@ -6,30 +6,23 @@
     @return calc(($height / $size) *1em);
 }
 
-
 // ---------------------
 // Mixins
 // ---------------------
 
 // vlastnost vyberu
 @mixin selection {
-    ::-moz-selection {
-        @content;
-    }
-
     ::selection {
-        @content;
+        background-color: #1683ff;
+        color: #ffffff;
     }
 }
 
 // zadny vyber
 @mixin noSelection {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+
     user-select: none;
 }
-
 
 // $value= border-box, content-box, inherit
 @mixin box-sizing ($value) {
@@ -38,7 +31,7 @@
 }
 
 
-// zakladni layout
+// basic Flex layout
 @mixin flex($justify: space-between, $align: flex-start, $gap: 0rem, $direction: row, $wrap: nowrap) {
     display: flex;
     flex-direction: $direction;
@@ -55,7 +48,6 @@
     align-items: $align;
 }
 
-
 @mixin container($width: 90rem) {
     max-width: $width;
     margin-inline: auto;
@@ -67,6 +59,30 @@
     background: -moz-radial-gradient($background);
     background: -o-radial-gradient($background);
     background: radial-gradient($background);
+}
+
+@mixin beathingBackround ($firstColor, $secondColor) {
+
+    //barva gradientu
+    background: linear-gradient(-45deg,
+            $firstColor 0%,
+            $secondColor 100%);
+    background-size: 300%;
+    animation: gradient 4s ease infinite;
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
 }
 
 
