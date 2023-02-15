@@ -45,26 +45,26 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const autoprefixer = require('gulp-autoprefixer');
 const webp = require('gulp-webp');
-const sourcemaps = require('gulp-sourcemaps');
+// const sourcemaps = require('gulp-sourcemaps');
 
 function compileSass() {
     return gulp
-    .src('./scss/**/*.scss')
-    .pipe(sourcemaps.init()) // inicializace generování sourcemaps
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write('.')) // zápis sourcemaps do souboru
-    .pipe(gulp.dest('./css'));
+        .src('./scss/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./css'));
+    // .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.write('.'))
 }
 
 function compileMini() {
     return gulp
-    .src('./scss/**/*.scss')
-    .pipe(sourcemaps.init()) // inicializace generování sourcemaps
-    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
-    .pipe(autoprefixer())
-    .pipe(sourcemaps.write('.')) // zápis sourcemaps do souboru
-    .pipe(gulp.dest('./css'));
+        .src('./scss/**/*.scss')
+        .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./css'));
+    // .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.write('.'))
 }
 
 function generateWebp() {
@@ -255,14 +255,12 @@ html {
 
 body {
     font-family: 'Overpass', sans-serif;
-    @include beathingBackround($clr11, $clr12);
 }
 
 // @media only screen and (max-width: 500px) {}
-}`;
+`;
 
-const mixScss = `
-@use 'var' as *;
+const mixScss = `@use 'var' as *;
 
 // --- function ---
 // --- funkce 'em' na line height prepocet na em
@@ -270,30 +268,23 @@ const mixScss = `
     @return calc(($height / $size) *1em);
 }
 
-
 // ---------------------
 // Mixins
 // ---------------------
 
 // vlastnost vyberu
 @mixin selection {
-    ::-moz-selection {
-        @content;
-    }
-
     ::selection {
-        @content;
+        background-color: #1683ff;
+        color: #ffffff;
     }
 }
 
 // zadny vyber
 @mixin noSelection {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
+
     user-select: none;
 }
-
 
 // $value= border-box, content-box, inherit
 @mixin box-sizing ($value) {
@@ -302,7 +293,7 @@ const mixScss = `
 }
 
 
-// zakladni layout
+// basic Flex layout
 @mixin flex($justify: space-between, $align: flex-start, $gap: 0rem, $direction: row, $wrap: nowrap) {
     display: flex;
     flex-direction: $direction;
@@ -319,10 +310,9 @@ const mixScss = `
     align-items: $align;
 }
 
-
 @mixin container($width: 90rem) {
     max-width: $width;
-    margin: 0 auto;
+    margin-inline: auto;
     padding: 0 0rem;
 }
 
@@ -333,10 +323,34 @@ const mixScss = `
     background: radial-gradient($background);
 }
 
+@mixin beathingBackround ($firstColor, $secondColor) {
+
+    //barva gradientu
+    background: linear-gradient(-45deg,
+            $firstColor 0%,
+            $secondColor 100%);
+    background-size: 300%;
+    animation: gradient 4s ease infinite;
+
+    @keyframes gradient {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+}
+
 
 // --- placeholders ---
 %autoMargin {
-    margin: 0 auto;
+    margin-inline: auto;
 }
 
 %autoWidth {
@@ -545,7 +559,7 @@ mode con:cols=100 lines=50
 color 0A
 title Sass Script
 
-start "" "C:\\Users\\Vigo\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe" -r ${folderNamePath} --wait
+start "" "C:\\Users\\Vigo\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe" -r "${folderNamePath}" --wait
 
 
 cd ${folderNamePath}
@@ -589,6 +603,8 @@ makeDir('./css', 'css');
 makeDir('./img', 'img');
 makeDir('./scss', 'scss');
 makeDir('./scss/partials', 'partials');
+makeDir('./imageInput', 'imageInput');
+makeDir('./imageOuput', 'imageOuput');
 
 makefile('./index.html', 'index.html');
 makefile('./css/normalize.css', 'normalize.css');

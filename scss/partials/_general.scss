@@ -17,10 +17,9 @@ html {
     @include selection;
 }
 
-
 body {
     font-family: 'Overpass', sans-serif;
-    @include beathingBackround($clr11, $clr12);
+    @extend %backClr14;
 }
 
 .hidden {
@@ -46,11 +45,7 @@ p {
 }
 
 .content {
-    @include radialGradient;
-    @include noSelection;
-    @extend %borderRadius30;
-    min-height: 26rem;
-    padding: 2rem;
+    @extend %content;
 
     .content-star {
         @include flexCenter;
@@ -61,22 +56,85 @@ p {
     }
 
     .content-heading {
-        @extend %clr10;
-        @extend %weight-700;
-        font-size: var(--h1-fs);
-        line-height: em(35, 28);
+        @extend %heading
     }
 
     .h1--margin {
-        margin: 2.7rem 0 .3em 0
+        margin: 2.2rem 0 .3em 0
+    }
+
+    #form {
+        .content-radio {
+            border: none;
+            @include flex;
+            padding: 0;
+            margin-top: 24px;
+
+            .content-radio-label {
+                @include flexCenter;
+                @extend %clr15;
+                cursor: pointer;
+                @extend %borderRadius50;
+                @extend %backClr13;
+                @extend %weight-700;
+                font-size: var(--num-fs);
+                width: 51px;
+                height: 51px;
+                line-height: em(24px, 16px);
+                transition: background-color ease-in-out .2s, color ease-in-out .2s;
+
+                &:hover {
+                    @extend %clr10;
+                    @extend %backClr15;
+                }
+            }
+
+            .content-radio-items {
+                display: none;
+                appearance: none;
+                width: 0px;
+                height: 0px;
+
+                &:checked~.content-radio-label {
+                    @extend %backClr12;
+                    @extend %clr10;
+
+                }
+            }
+        }
+
+        .content-submit {
+            width: 100%;
+            border: none;
+            @extend %borderRadius30;
+            @extend %clr10;
+            @extend %weight-700;
+            @extend %backClr12;
+            font-size: var(--btn-fs);
+            line-height: em(19px, 15px);
+            letter-spacing: .125rem;
+            padding-block: .8rem;
+            margin-top: 32px;
+            cursor: pointer;
+            transition: background-color ease-in-out .2s;
+
+            &:disabled {
+                @extend %backClr13;
+                cursor: not-allowed;
+            }
+
+            &:disabled:is(:hover, :focus) {
+                @extend %backClr15;
+                outline: none;
+            }
+        }
     }
 }
-
 
 // --- second display --- 
 .thanks {
     text-align: center;
-    @extend .content;
+    @extend %content;
 
     .thanks-js {
         @extend %output;
@@ -89,14 +147,13 @@ p {
     }
 
     .thanks-heading {
-        @extend .content-heading;
+        @extend %heading;
     }
 
     .h2--margin {
         margin-bottom: .3em;
     }
 }
-
 
 @media only screen and (max-width: 500px) {
 
@@ -111,9 +168,9 @@ p {
         padding: 0 2rem;
     }
 
-    .content {
+    .content,
+    .thanks {
         padding: 1rem;
         min-width: 15.125rem;
-
     }
 }

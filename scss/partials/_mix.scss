@@ -61,14 +61,14 @@
     background: radial-gradient($background);
 }
 
-@mixin beathingBackround ($firstColor, $secondColor) {
+@mixin breathingBackground ($firstColor, $secondColor) {
 
     //barva gradientu
     background: linear-gradient(-45deg,
             $firstColor 0%,
             $secondColor 100%);
     background-size: 300%;
-    animation: gradient 4s ease infinite;
+    animation: gradient 10s ease infinite;
 
     @keyframes gradient {
         0% {
@@ -221,4 +221,20 @@
     color: $clr15;
     font-size: var(--num-fs);
     line-height: em(24, 16);
+}
+
+%content {
+    // @include breathingBackground($clr14, $clr13);
+    @include radialGradient;
+    @include noSelection;
+    @extend %borderRadius30;
+    min-height: 26rem;
+    padding: 2rem;
+}
+
+%heading {
+    @extend %clr10;
+    @extend %weight-700;
+    font-size: var(--h1-fs);
+    line-height: em(35, 28);
 }

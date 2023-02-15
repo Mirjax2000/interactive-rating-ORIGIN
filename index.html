@@ -32,8 +32,33 @@
                 offering!</p>
 
             <form id="form">
-             
-                <button class="content-submit">SUBMIT</button>
+                <fieldset class="content-radio">
+
+                    <div class="content-radio-holder">
+                        <input type="radio" class="content-radio-items" id="one" value="1" name="rating">
+                        <label class="content-radio-label" for="one">1</label>
+                    </div>
+                    <div class="content-radio-holder">
+                        <input type="radio" class="content-radio-items" id="two" value="2" name="rating">
+                        <label class="content-radio-label" for="two">2</label>
+                    </div>
+                    <div class="content-radio-holder">
+                        <input type="radio" class="content-radio-items" id="three" value="3" name="rating">
+                        <label class="content-radio-label" for="three">3</label>
+                    </div>
+                    <div class="content-radio-holder">
+                        <input type="radio" class="content-radio-items" id="four" value="4" name="rating">
+                        <label class="content-radio-label" for="four">4</label>
+                    </div>
+                    <div class="content-radio-holder">
+                        <input type="radio" class="content-radio-items" id="five" value="5" name="rating">
+                        <label class="content-radio-label" for="five">5</label>
+                    </div>
+
+                </fieldset>
+
+                <button class="content-submit" disabled>SUBMIT</button>
+
             </form>
         </section>
 
@@ -41,7 +66,7 @@
             <div class="thanks-img">
                 <img src="./img/illustration-thank-you.svg">
             </div>
-            <h3 class="thanks-js">You selected <span class="num"></span> out of <span class="array"></span></h3>
+            <h3 class="thanks-js">You selected <span class="num"></span> out of 5</h3>
             <h2 class="thanks-heading h2--margin">Thank you!</h2>
             <p>We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get
                 in
@@ -49,6 +74,7 @@
         </section>
 
     </main>
+
     <script src="./js/script.js"></script>
 
 </body>
